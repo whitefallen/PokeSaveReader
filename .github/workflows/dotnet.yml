@@ -29,6 +29,6 @@ jobs:
       with:
         # Artifact name
         name: PokeSaveReader #.zip will be added automatically
-        path: ./bin/Debug/net5.0/*.*
+        path: /home/runner/work/PokeSaveReader/PokeSaveReader/PokemonSaveRead/bin/Debug/net5.0/*
 
 
