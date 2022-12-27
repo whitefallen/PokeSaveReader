@@ -17,7 +17,11 @@ namespace PokemonSaveRead
                 if (sav != null)
                 {
                     var party = sav.PartyData;
-                    var pokemonParty = new PokemonParty();
+                    var pokemonSaveData = new PokemonSaveData();
+                    pokemonSaveData.TrainerName = sav.OT;
+                    pokemonSaveData.PlayedTime = sav.PlayTimeString;
+                    Console.WriteLine();
+                    //pokemonSaveData.CurrentBadges = ;
                     foreach (var pokemon in party)
                     {
                         var tempPoke = new Pokemon
@@ -26,11 +30,11 @@ namespace PokemonSaveRead
                             Nickname = pokemon.Nickname,
                             Level = pokemon.CurrentLevel
                         };
-                        pokemonParty.Party.Add(tempPoke);
+                        pokemonSaveData.Party.Add(tempPoke);
                     }
                     var fileName = $"Party-{now}.json";
-                    var jsonString = JsonConvert.SerializeObject(pokemonParty, Formatting.Indented);
-                    Console.WriteLine(JsonConvert.SerializeObject(pokemonParty));
+                    var jsonString = JsonConvert.SerializeObject(pokemonSaveData, Formatting.Indented);
+                    Console.WriteLine(JsonConvert.SerializeObject(pokemonSaveData));
                     File.WriteAllText(fileName, jsonString);
                 }
                 else
